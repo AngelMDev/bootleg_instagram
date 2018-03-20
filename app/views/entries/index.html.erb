@@ -1,5 +1,6 @@
 <% @entries.each do |entry| %>
   <%= link_to(entry.author, "/entries/#{entry.id}") %>
+  <br>
 <% end %>
 <br>
-<%link_to("New","/entries/new")%>
+<%= button_to("New",{:method => :get})%>

@@ -4,8 +4,9 @@ class EntriesController < ApplicationController
   end
 
   def create
-    entry=Entry.create!(entry_params)
-    redirect_to entry
+    @entry=Entry.new(entry_params)
+    @entry.save
+    redirect_to @entry
   end
 
   def new
@@ -31,5 +32,5 @@ class EntriesController < ApplicationController
   def entry_params
     params.require(:entry).permit(:author,:photo_url,:date_taken)
   end
-  
+
 end
