@@ -1,6 +1,19 @@
+<%= link_to("Index", "/entries") %>
+ <br>
+ <% if @entry.errors.any? %>
+    <% @entry.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+<br>
+
 <%= form_for @entry,{action: "create"} do |form| %>
-  <%= form.text_field :author %>
-  <%= form.text_field :photo_url %>
-  <%= form.text_field :date_taken %>
-  <%= form.submit "Create" %>
-<% end %>
+  <%=form.label :author %>
+  <%=form.text_field :author %> <br>
+  <%=form.label :photo_url %>
+  <%=form.text_field :photo_url %> <br>
+  <%=form.label :date_taken %>
+  <%=form.text_field :date_taken %> <br>
+  <%=form.submit "Create" %>
+  <% end %>
+<br>

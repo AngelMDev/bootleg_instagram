@@ -5,3 +5,4 @@
 Posted by <%= @entry.author %> on <%= @entry.date_taken%>
 <br>
 <%= link_to("Edit", "/entries/#{@entry.id}/edit") %>
+<%= link_to 'delete', @entry, :method => :delete, :title => "Delete" %>

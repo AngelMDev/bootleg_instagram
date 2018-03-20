@@ -5,8 +5,12 @@ class EntriesController < ApplicationController
 
   def create
     @entry=Entry.new(entry_params)
-    @entry.save
-    redirect_to @entry
+    if(@entry.save)
+      redirect_to @entry
+    else
+      #@errors=entry.errors
+      render 'new'
+    end
   end
 
   def new
@@ -25,6 +29,12 @@ class EntriesController < ApplicationController
     entry = Entry.find(params[:id])
     entry.update!(entry_params)
     redirect_to entry
+  end
+
+  def destroy
+    entry=Entry.find(params[:id])
+    entry.destroy!
+    redirect_to action: "index"
   end
 
   private
